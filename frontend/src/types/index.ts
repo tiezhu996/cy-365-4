@@ -22,6 +22,17 @@ export interface OperationRecord {
   priority: string;
 }
 
+export interface PendingOrder {
+  orderNo: string;
+  productName: string;
+  receiver: string;
+  phone: string;
+  address: string;
+  points: number;
+  createTime: string;
+  status: string;
+}
+
 export interface OverviewResponse {
   appName: string;
   appCode: string;
@@ -29,4 +40,5 @@ export interface OverviewResponse {
   features: FeatureItem[];
   kpis: KpiItem[];
   records: OperationRecord[];
+  pendingOrders: PendingOrder[];
 }

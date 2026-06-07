@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Box, Button, Chip, CssBaseline, Paper, ThemeProvider, Typography, createTheme } from "@mui/material";
 import { fetchOverview } from "./api/client";
 import { APP_CODE, APP_NAME, APP_THEME } from "./constants/app";
@@ -8,6 +8,7 @@ import type { OverviewResponse } from "./types";
 import { FeatureStrip } from "./components/FeatureStrip";
 import { MetricGrid } from "./components/MetricGrid";
 import { OperationsTable } from "./components/OperationsTable";
+import { PendingOrdersTable } from "./components/PendingOrdersTable";
 
 const theme = createTheme({
   palette: {
@@ -23,14 +24,25 @@ const theme = createTheme({
 export default function App() {
   const [overview, setOverview] = useState<OverviewResponse>(createFallbackOverview());
   const [notice, setNotice] = useState(REQUEST_MESSAGES.overviewFallback);
+  const intervalRef = useRef<number | null>(null);
 
-  useEffect(() => {
+  const loadData = () => {
     fetchOverview()
       .then((payload) => {
         setOverview(payload);
         setNotice("后端服务已联通，当前展示实时接口数据。");
       })
       .catch(() => setNotice(REQUEST_MESSAGES.overviewFallback));
+  };
+
+  useEffect(() => {
+    loadData();
+    intervalRef.current = window.setInterval(loadData, 30000);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -57,6 +69,13 @@ export default function App() {
           <Box className="work-panel">
             <Typography variant="h5" gutterBottom>运营任务流</Typography>
             <OperationsTable records={overview.records} />
+          </Box>
+          <Box className="work-panel">
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+              <Typography variant="h5">待处理订单</Typography>
+              <Chip label={`${overview.pendingOrders.length} 单`} color="primary" size="small" />
+            </Box>
+            <PendingOrdersTable orders={overview.pendingOrders} />
           </Box>
         </section>
       </main>

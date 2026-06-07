@@ -1,4 +1,4 @@
-import type { FeatureItem, KpiItem, OperationRecord } from "../types";
+import type { FeatureItem, KpiItem, OperationRecord, PendingOrder } from "../types";
 
 export const localFeatures: FeatureItem[] = [
   {
@@ -105,5 +105,98 @@ export const operationRecords: OperationRecord[] = [
     "status": "可导出",
     "metric": "28 条",
     "priority": "中"
+  }
+];
+
+export const pendingOrders: PendingOrder[] = [
+  {
+    "orderNo": "EX20260607001",
+    "productName": "Apple AirPods Pro 2代",
+    "receiver": "张小明",
+    "phone": "138****5678",
+    "address": "北京市朝阳区建国路88号SOHO现代城A座1201",
+    "points": 18800,
+    "createTime": "2026-06-07 09:15:32",
+    "status": "待发货"
+  },
+  {
+    "orderNo": "EX20260607002",
+    "productName": "京东E卡 500元",
+    "receiver": "李芳芳",
+    "phone": "139****1234",
+    "address": "上海市浦东新区陆家嘴环路1000号恒生银行大厦",
+    "points": 5000,
+    "createTime": "2026-06-07 10:22:18",
+    "status": "待发货"
+  },
+  {
+    "orderNo": "EX20260607003",
+    "productName": "小米空气净化器4 Pro",
+    "receiver": "王建国",
+    "phone": "135****8899",
+    "address": "广州市天河区珠江新城华夏路8号合景国际金融广场",
+    "points": 12600,
+    "createTime": "2026-06-07 11:05:47",
+    "status": "待审核"
+  },
+  {
+    "orderNo": "EX20260607004",
+    "productName": "星巴克咖啡券 10张",
+    "receiver": "赵丽娜",
+    "phone": "137****6655",
+    "address": "深圳市南山区科技园南区高新南一道创维大厦",
+    "points": 3200,
+    "createTime": "2026-06-07 14:30:21",
+    "status": "待发货"
+  },
+  {
+    "orderNo": "EX20260607005",
+    "productName": "戴森吹风机HD15",
+    "receiver": "刘志强",
+    "phone": "136****3322",
+    "address": "杭州市西湖区文三路478号华星科技大厦",
+    "points": 28800,
+    "createTime": "2026-06-07 15:18:09",
+    "status": "待审核"
+  },
+  {
+    "orderNo": "EX20260607006",
+    "productName": "网易严选乳胶枕",
+    "receiver": "陈美玲",
+    "phone": "133****9988",
+    "address": "成都市锦江区春熙路东段1号阳光百货",
+    "points": 2800,
+    "createTime": "2026-06-07 16:42:55",
+    "status": "待发货"
+  },
+  {
+    "orderNo": "EX20260607007",
+    "productName": "索尼WH-1000XM5耳机",
+    "receiver": "周海涛",
+    "phone": "132****7766",
+    "address": "武汉市江汉区建设大道568号新世界国贸大厦",
+    "points": 22800,
+    "createTime": "2026-06-07 17:25:33",
+    "status": "待审核"
+  },
+  {
+    "orderNo": "EX20260607008",
+    "productName": "天猫超市卡 200元",
+    "receiver": "吴晓燕",
+    "phone": "131****4433",
+    "address": "南京市鼓楼区中山路18号德基广场",
+    "points": 2000,
+    "createTime": "2026-06-07 18:10:12",
+    "status": "待发货"
+  },
+  {
+    "orderNo": "EX20260607009",
+    "productName": "飞利浦电动牙刷Sonicare",
+    "receiver": "孙伟杰",
+    "phone": "130****2211",
+    "address": "西安市雁塔区高新路2号西安软件园",
+    "points": 5800,
+    "createTime": "2026-06-07 19:03:47",
+    "status": "待审核"
   }
 ];
